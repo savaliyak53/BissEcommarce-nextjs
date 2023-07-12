@@ -1,7 +1,6 @@
+"use client";
 import "@/../style/globals.css";
-// import { Inter } from 'next/font/google'
-
-// const inter = Inter({ subsets: ['latin'] })
+import Providers from "./utils/provider";
 
 export const metadata = {
   title: "Biss",
@@ -15,7 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
