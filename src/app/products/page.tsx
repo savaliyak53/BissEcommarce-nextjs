@@ -3,7 +3,12 @@ import Navbar from "../../../components/navbar";
 
 
 const Product = () => {
-  return <Navbar>Products</Navbar>;
+  return (
+    <>
+      <Navbar />
+      <div>login</div>
+    </>
+  );
 };
 
 export default Product;
