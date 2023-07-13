@@ -4,17 +4,15 @@ import React from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { FaOpencart } from "react-icons/fa";
 
-
 const Navbar = () => {
   const router = useRouter();
-
   const handleRouter = (route: string) => {
     router.push(route);
   };
 
   return (
     <>
-      <div className="flex justify-around bg-gray-800 sticky top-0 font-medium text-white py-3 px-10 lg:px-0">
+      <div className="flex justify-around bg-gray-800 sticky top-0 font-bold text-white py-3 px-10 lg:px-0">
         <div className="flex justify-between w-[35%]">
           <div
             onClick={() => handleRouter("/")}
