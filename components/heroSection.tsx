@@ -18,7 +18,7 @@ const HeroSection: React.FC = () => {
     textAlign: "center",
     background: "white",
     width: "360px",
-    objectFit: "cover",
+    objectFit: "contain",
   };
 
   const items: { id: number; image: string[] }[] = products
@@ -41,11 +41,6 @@ const HeroSection: React.FC = () => {
   const skinImg: string[] | undefined = secondObj?.image;
   const perfumeImg: string[] | undefined = thirdObj?.image;
 
-  if (mobileImg && mobileImg.length > 0) {
-    console.log(mobileImg[0]);
-  } else {
-    console.log("No mobile image found.");
-  }
 
   const mobileId = firstObj?.id;
   const skinId = firstObj?.id;
