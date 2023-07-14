@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="flex justify-around bg-gray-800 sticky top-0 font-bold text-white py-3 px-10 lg:px-0">
+      <div className="flex justify-around bg-gray-800 sticky top-0 z-50 font-bold text-white py-3 px-10 lg:px-0">
         <div className="flex justify-between w-[35%]">
           <div
             onClick={() => handleRouter("/")}

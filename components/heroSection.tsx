@@ -1,9 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useGetProducts } from "../Hooks/api_hooks/products";
 import { Button, Carousel } from "antd";
-import Image from "next/image";
 
 const HeroSection: React.FC = () => {
   const { data, isloading }: any = useGetProducts();
@@ -16,8 +16,9 @@ const HeroSection: React.FC = () => {
     color: "#fff",
     lineHeight: "160px",
     textAlign: "center",
+    background: "white",
     width: "360px",
-    objectFit:'contain'
+    objectFit: "cover",
   };
 
   const items: { id: number; image: string[] }[] = products
@@ -52,11 +53,11 @@ const HeroSection: React.FC = () => {
 
   return (
     <>
-      <div className="h-[125vh] bg-gray-800 text-white flex flex-col items-center justify-around">
-        <div className="w-[40%] leading-tight text-center font-bold text-6xl">
-          Amazing <br /> e-commerce platform for everyone
+      <div className="h-auto bg-gray-800 text-white py-10 space-y-[2.5rem] flex flex-col items-center justify-around">
+        <div className="sm:w-[60%] mx-5 leading-tight text-center font-bold text-6xl">
+          Bizz platform for everyone
         </div>
-        <div className="w-[40%] space-y-[2.5rem] -mt-32 leading-snug font-semibold text-center ">
+        <div className="w-[40%] space-y-[2.5rem] leading-snug font-semibold text-center ">
           <div>
             Is No Sore It Will Not Heal, No Ecommerce It Will Not Subdue ll
             Wonder Where The Yellow Went, When You Brush Your Teeth With
@@ -69,17 +70,30 @@ const HeroSection: React.FC = () => {
             Go to shopping
           </button>
         </div>
-        <div className="flex justify-center space-x-6 -mt-10 ">
-          <Carousel dots={false} autoplay={true} className="w-96">
+        <div className="flex-lg lg:flex justify-center !mx-5 space-y-6 lg:space-y-0">
+          <Carousel
+            dots={false}
+            autoplay={true}
+            className="w-[25rem] mx-3 shadow-xl shadow-black z-0"
+          >
             {mobileImg?.map((img, index) => {
               return (
                 <div key={index}>
-                  <img src={img} alt="img" style={contentStyle} />
+                  <img
+                    src={img}
+                    alt="img"
+                    style={contentStyle}
+                    className="!object-contain"
+                  />
                 </div>
               );
             })}
           </Carousel>
-          <Carousel dots={false} autoplay={true} className="w-96">
+          <Carousel
+            dots={false}
+            autoplay={true}
+            className="w-[25rem] !mx-3 shadow-xl shadow-black"
+          >
             {skinImg?.map((img, index) => {
               return (
                 <div key={index}>
@@ -88,7 +102,11 @@ const HeroSection: React.FC = () => {
               );
             })}
           </Carousel>
-          <Carousel dots={false} autoplay={true} className="w-96">
+          <Carousel
+            dots={false}
+            autoplay={true}
+            className="w-[25rem] !mx-3 shadow-xl shadow-black"
+          >
             {perfumeImg?.map((img, index) => {
               return (
                 <div key={index}>
