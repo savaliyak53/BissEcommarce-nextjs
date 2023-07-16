@@ -1,7 +1,7 @@
 import { product, categorys } from "../types";
 
 const products: product = {
-  product: "/products",
+  product: "/products?limit=100",
 };
 
 const category: categorys = {

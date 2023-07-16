@@ -3,10 +3,11 @@
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useGetProducts } from "../Hooks/api_hooks/products";
-import { Button, Carousel } from "antd";
+import { Button, Carousel, Spin } from "antd";
+import { LoaderIcon } from "./loader";
 
 const HeroSection: React.FC = () => {
-  const { data, isloading }: any = useGetProducts();
+  const { data, isLoading }: any = useGetProducts();
   const router = useRouter();
   const products = data?.data.products;
 
@@ -19,6 +20,7 @@ const HeroSection: React.FC = () => {
     background: "white",
     width: "360px",
     objectFit: "contain",
+    // imageRendering: "pixelated",
   };
 
   const items: { id: number; image: string[] }[] = products
@@ -40,7 +42,6 @@ const HeroSection: React.FC = () => {
   const mobileImg: string[] | undefined = firstObj?.image;
   const skinImg: string[] | undefined = secondObj?.image;
   const perfumeImg: string[] | undefined = thirdObj?.image;
-
 
   const mobileId = firstObj?.id;
   const skinId = firstObj?.id;
@@ -71,44 +72,56 @@ const HeroSection: React.FC = () => {
             autoplay={true}
             className="w-[25rem] mx-3 shadow-xl shadow-black z-0"
           >
-            {mobileImg?.map((img, index) => {
-              return (
-                <div key={index}>
-                  <img
-                    src={img}
-                    alt="img"
-                    style={contentStyle}
-                    className="!object-contain"
-                  />
-                </div>
-              );
-            })}
+            {isLoading ? (
+              <LoaderIcon size="30" classNames="bg-white h-[260px]" />
+            ) : (
+              mobileImg?.map((img, index) => {
+                return (
+                  <div key={index}>
+                    <img
+                      src={img}
+                      alt="img"
+                      style={contentStyle}
+                      className="!object-contain"
+                    />
+                  </div>
+                );
+              })
+            )}
           </Carousel>
           <Carousel
             dots={false}
             autoplay={true}
             className="w-[25rem] !mx-3 shadow-xl shadow-black"
           >
-            {skinImg?.map((img, index) => {
-              return (
-                <div key={index}>
-                  <img src={img} alt="img" style={contentStyle} />
-                </div>
-              );
-            })}
+            {isLoading ? (
+              <LoaderIcon size="30" classNames="bg-white h-[260px]" />
+            ) : (
+              skinImg?.map((img, index) => {
+                return (
+                  <div key={index}>
+                    <img src={img} alt="img" style={contentStyle} />
+                  </div>
+                );
+              })
+            )}
           </Carousel>
           <Carousel
             dots={false}
             autoplay={true}
             className="w-[25rem] !mx-3 shadow-xl shadow-black"
           >
-            {perfumeImg?.map((img, index) => {
-              return (
-                <div key={index}>
-                  <img src={img} alt="img" style={contentStyle} />
-                </div>
-              );
-            })}
+            {isLoading ? (
+              <LoaderIcon size="30" classNames="bg-white h-[260px]" />
+            ) : (
+              perfumeImg?.map((img, index) => {
+                return (
+                  <div key={index}>
+                    <img src={img} alt="img" style={contentStyle} />
+                  </div>
+                );
+              })
+            )}
           </Carousel>
         </div>
       </div>

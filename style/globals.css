@@ -7,6 +7,8 @@
   font-family: "Inter", sans-serif;
 }
 
+/* category */
+
 .navbarhover {
   @apply hover:bg-blue-400 rounded-md hover:px-1 hover:text-black;
 }
@@ -16,7 +18,6 @@
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
 }
-
 
 /* For WebKit browsers (Chrome, Safari) */
 .parent-container::-webkit-scrollbar {
@@ -30,3 +31,6 @@
 .parent-container::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
+
+/* footer component */
+
