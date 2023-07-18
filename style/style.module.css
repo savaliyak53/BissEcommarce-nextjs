@@ -1,3 +1,39 @@
+/* footer */
 .footerImg {
   background-image: url("./image/svg.png");
+}
+
+.footerHover:hover {
+  @apply text-slate-300 border-b border-slate-300;
+  margin-bottom: -1px;
+}
+
+/* login page */
+
+.loginImg {
+  background: url("./image/login.jpg");
+  background-size: 100% 100%;
+}
+
+@media (max-width: 640px) {
+  .loginImg {
+    background: rgba(244, 244, 244, 255);
+  }
+}
+
+.fadeInLeftBig {
+  animation-name: fadeInLeftBig;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeInLeftBig {
+  0% {
+    opacity: 0;
+    transform: translate3d(-300px, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0px, 0, 0);
+  }
 }

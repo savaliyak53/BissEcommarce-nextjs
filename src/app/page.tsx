@@ -11,8 +11,8 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <HeroSection />
-      <Categories />
+      {/* <HeroSection /> */}
+      {/* <Categories /> */}
       <Footer />
     </>
   );

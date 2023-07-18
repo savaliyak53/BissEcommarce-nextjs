@@ -32,5 +32,17 @@
   background-color: transparent;
 }
 
-/* footer component */
+.ant-input::placeholder {
+  color: #1f2937;
+}
+.inputBorder.ant-input {
+  border-bottom: 1px solid #1f2937 !important;
+  border-radius: 0%;
+}
 
+.ant-input-password {
+  border-bottom: 1px solid #1f2937 !important;
+  border-radius: 0%;
+}
+
+/* footer component */

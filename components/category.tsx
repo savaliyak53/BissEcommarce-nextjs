@@ -45,7 +45,9 @@ const Categories: React.FC = () => {
           <LoaderIcon size="30" classNames="h-40" />
         ) : (
           filteredProducts?.map((product: any) => {
-            return (
+            return isproductLoda ? (
+              <LoaderIcon size="30" classNames="h-40" />
+            ) : (
               <div
                 key={product.id}
                 className="w-[150%] lg:w-[200%] pl-10 child-div"
