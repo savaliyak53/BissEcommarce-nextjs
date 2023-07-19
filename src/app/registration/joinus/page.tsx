@@ -3,12 +3,14 @@ import React from "react";
 import Navbar from "../../../../components/navbar";
 import styles from "@/../style/style.module.css";
 import Form from "antd/es/form";
-import { Button, Input, Radio, Space } from "antd";
+import { Button, Input, Radio, Select, Space } from "antd";
 import { BsFacebook } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { FaLinkedinIn } from "react-icons/fa";
 import FormItem from "antd/es/form/FormItem";
 import Link from "next/link";
+
+const Option = Select.Option;
 
 const JoinUs = () => {
   interface value {
@@ -18,6 +20,8 @@ const JoinUs = () => {
   const handleSubmit = (values: value) => {
     console.log(values);
   };
+
+  const prefixSelector = <Form.Item name="prefix" noStyle></Form.Item>;
 
   return (
     <div className=" text-gray-800 w-full">
@@ -37,7 +41,16 @@ const JoinUs = () => {
             <div className="pt-7 pb-3">OR</div>
             <Form onFinish={handleSubmit} className="space-y-2  w-[60%]">
               <div className="flex justify-between">
-                <FormItem name="firstName" className="w-[45%]">
+                <FormItem
+                  name="firstName"
+                  className="w-[45%]"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input your First name!",
+                    },
+                  ]}
+                >
                   <Input
                     type="text"
                     placeholder="First Name"
@@ -45,7 +58,16 @@ const JoinUs = () => {
                     className="inputBorder"
                   />
                 </FormItem>
-                <FormItem name="lastName" className="w-[45%]">
+                <FormItem
+                  name="lastName"
+                  className="w-[45%]"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input your last name!",
+                    },
+                  ]}
+                >
                   <Input
                     type="text"
                     placeholder="Last Name"
@@ -54,21 +76,6 @@ const JoinUs = () => {
                   />
                 </FormItem>
               </div>
-              <FormItem name="Dob" label="Date of Birth" className="ml-3">
-                <Input
-                  placeholder="Date of birth"
-                  bordered={false}
-                  className="inputBorder"
-                  type="Date"
-                />
-              </FormItem>
-              <FormItem name="gender" label="Gender" className="pt-4 ml-3">
-                <Radio.Group>
-                  <Radio value="male">Male</Radio>
-                  <Radio value="female">Female</Radio>
-                  <Radio value="other">Other</Radio>
-                </Radio.Group>
-              </FormItem>
               <FormItem
                 name="email"
                 rules={[
@@ -81,6 +88,7 @@ const JoinUs = () => {
                     message: "Please input your E-mail!",
                   },
                 ]}
+                className="!-mt-6"
               >
                 <Input
                   placeholder="Email"
@@ -88,6 +96,25 @@ const JoinUs = () => {
                   className="inputBorder"
                 />
               </FormItem>
+              <Form.Item
+                name="phone"
+                rules={[
+                  {
+                    max: 10,
+                  },
+                  {
+                    required: true,
+                    message: "Please input your phone number!",
+                  },
+                ]}
+              >
+                <Input
+                  placeholder="Phone"
+                  bordered={false}
+                  type="text"
+                  className="inputBorder"
+                />
+              </Form.Item>
               <FormItem
                 name="password"
                 rules={[
@@ -104,7 +131,6 @@ const JoinUs = () => {
                       "Password must contain at least one lowercase letter, uppercase letter, number, and special character",
                   },
                 ]}
-                className="py-6"
               >
                 <Input.Password
                   placeholder="Password"
@@ -115,21 +141,71 @@ const JoinUs = () => {
               </FormItem>
               <FormItem
                 name="cpassword"
+                dependencies={["password"]}
+                hasFeedback
                 rules={[
-                  { required: true, message: "Please add a confirm password" },
+                  { required: true, message: "Please confirm your password!" },
+                  ({ getFieldValue }) => ({
+                    validator(_, value) {
+                      if (!value || getFieldValue("password") === value) {
+                        return Promise.resolve();
+                      }
+                      return Promise.reject(
+                        new Error("Entered password does not match")
+                      );
+                    },
+                  }),
                 ]}
               >
                 <Input.Password
-                  placeholder="confirm password"
+                  placeholder="Confirm Password"
                   visibilityToggle={true}
                   bordered={false}
                   className="passwordBorder"
                 />
               </FormItem>
+              <FormItem
+                name="dob"
+                label="Date of Birth"
+                className="pt-3 ml-3"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your date of birth!",
+                  },
+                ]}
+              >
+                <Input
+                  bordered={false}
+                  className="inputBorder -mt-3"
+                  type="Date"
+                />
+              </FormItem>
+              <FormItem
+                name="gender"
+                label="Gender"
+                className="ml-3"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your gender!",
+                  },
+                ]}
+              >
+                <Select
+                  className="w-[100%] -mt-3"
+                  defaultValue="male"
+                  bordered={false}
+                >
+                  <Option value="male">Male</Option>
+                  <Option value="female">Female</Option>
+                  <Option value="other">Other</Option>
+                </Select>
+              </FormItem>
               <FormItem>
                 <Button
                   htmlType="submit"
-                  className="bg-blue-400 text-white mt-2 w-[50%]"
+                  className="bg-blue-400 text-white  w-[50%]"
                 >
                   Sign up
                 </Button>

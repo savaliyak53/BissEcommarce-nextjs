@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useGetProducts } from "../Hooks/api_hooks/products";
-import { Button, Carousel, Spin } from "antd";
+import { Carousel } from "antd";
 import { LoaderIcon } from "./loader";
 
 const HeroSection: React.FC = () => {
@@ -20,7 +20,6 @@ const HeroSection: React.FC = () => {
     background: "white",
     width: "360px",
     objectFit: "contain",
-    // imageRendering: "pixelated",
   };
 
   const items: { id: number; image: string[] }[] = products

@@ -45,4 +45,15 @@
   border-radius: 0%;
 }
 
+.ant-select {
+  border-bottom: 1px solid #1f2937 !important;
+}
+
 /* footer component */
+/* list view */
+
+.productImg {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+}

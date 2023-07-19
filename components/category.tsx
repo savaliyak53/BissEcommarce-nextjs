@@ -3,6 +3,7 @@ import React from "react";
 import { useGetCategories } from "../Hooks/api_hooks/category";
 import { useGetProducts } from "../Hooks/api_hooks/products";
 import { LoaderIcon } from "./loader";
+import { useRouter } from "next/navigation";
 
 const Categories: React.FC = () => {
   const { data: Category }: any = useGetCategories();
@@ -11,6 +12,8 @@ const Categories: React.FC = () => {
   const CategoryList: string[] = Category?.data || [];
 
   const filteredProducts: any = [];
+
+  const router = useRouter();
 
   for (const category of CategoryList) {
     const product = productsList?.find(
@@ -56,6 +59,7 @@ const Categories: React.FC = () => {
                   src={product?.images[2]}
                   alt="category"
                   className="h-40 object-contain"
+                  onClick={() => router.push(`/${product.category}`)}
                 />
                 <p className="text-xl font-medium capitalize text-center py-2 sm:text-start">
                   {product.category}
@@ -78,6 +82,7 @@ const Categories: React.FC = () => {
                   src={product?.images[0]}
                   alt="company"
                   className="h-40 object-contain"
+                  onClick={() => router.push(`/${product.brand}`)}
                 />
                 <p className="text-xl font-medium capitalize text-center py-2 sm:text-start">
                   {product.brand}
@@ -100,6 +105,7 @@ const Categories: React.FC = () => {
                   src={product?.images[0]}
                   alt="discount"
                   className="h-40 object-contain"
+                  onClick={() => router.push(`/singleproducts/${product.id}`)}
                 />
                 <p className="text-xl font-medium capitalize text-center py-2 sm:text-start">
                   Up to {product.discountPercentage}% off

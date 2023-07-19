@@ -19,6 +19,8 @@ const Login = () => {
     console.log(values);
   };
 
+  
+
   return (
     <div className=" text-gray-800 w-full">
       <Navbar />
@@ -92,9 +94,7 @@ const Login = () => {
               </FormItem>
               <div className="flex justify-between">
                 <Link href={"/forgetpassword"}>Forget password?</Link>
-                <Link href={"/registration/joinus"}>
-                  Don't have an account?
-                </Link>
+                <Link href={"/registration/joinus"}>Dont have an account?</Link>
               </div>
             </Form>
           </div>

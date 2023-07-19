@@ -19,7 +19,6 @@ ultronClient.interceptors.request.use(
 // Add a response interceptor
 ultronClient.interceptors.response.use(
   function (response) {
-    console.log(response);
     return response;
   },
   function (error) {

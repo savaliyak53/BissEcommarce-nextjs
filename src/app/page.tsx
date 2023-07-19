@@ -1,5 +1,6 @@
 // import styles from "@/../style/style.module.css";
 "use client";
+import Link from "next/link";
 import { useGetProducts } from "../../Hooks/api_hooks/products";
 import Categories from "../../components/category";
 import Footer from "../../components/footer";
@@ -12,7 +13,7 @@ export default function Home() {
     <>
       <Navbar />
       {/* <HeroSection /> */}
-      {/* <Categories /> */}
+      <Categories />
       <Footer />
     </>
   );
