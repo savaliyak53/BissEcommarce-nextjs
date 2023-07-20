@@ -92,7 +92,7 @@ const Categories: React.FC = () => {
           })
         )}
       </div>
-      <hr className="border border-b-0 border-gray-400" />
+      <hr className="border border-b-0 border-gray-400  relative" />
       <h1 className="text-3xl font-bold p-5 ">Shop by Discount</h1>
       <div className="grid grid-flow-col gap-x-24 lg:gap-x-32 w-full overflow-x-auto parent-container ">
         {isproductLoda ? (
@@ -102,7 +102,7 @@ const Categories: React.FC = () => {
             return (
               <div key={product.id} className="w-[200%] pl-10 child-div">
                 <img
-                  src={product?.images[0]}
+                  src={product.thumbnail}
                   alt="discount"
                   className="h-40 object-contain"
                   onClick={() => router.push(`/singleproducts/${product.id}`)}

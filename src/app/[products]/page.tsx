@@ -21,7 +21,7 @@ export default function Products({ params }: { params: { products: string } }) {
           You can see in the HTML I commented out the cell that will used by the
           rowspan and added a .test class with a height and background color so
         </div>
-        <div className="bg-blue-500 col-start-3 col-end-9 sticky top-[57px]">
+        <div className=" col-start-3 border border-red-300 col-end-9 sticky top-[57px]">
           {isOpen ? (
             <BiSolidGrid onClick={onRequestClose} title="Grid" />
           ) : (

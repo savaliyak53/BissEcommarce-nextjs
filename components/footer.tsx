@@ -3,7 +3,7 @@ import styles from "../style/style.module.css";
 import Link from "next/link";
 
 const Footer = () => {
-  const curryear:number = new Date().getFullYear();
+  const curryear: number = new Date().getFullYear();
   return (
     <div className="text-white bg-slate-800">
       <div className={`${styles.footerImg} -mt-96 bg-slate-200  sm:h-[625px] `}>
@@ -53,9 +53,9 @@ const Footer = () => {
           </div>
         </div>
         <div className="bg-gray-800 py-4  !text-2xl text-center">
-          <Link href="#navbar" className="p-3 rounded-md bg-blue-500">
+          <a href="#heroSection" className="p-3 rounded-md bg-blue-500">
             Back to Top
-          </Link>
+          </a>
         </div>
       </div>
       <hr />

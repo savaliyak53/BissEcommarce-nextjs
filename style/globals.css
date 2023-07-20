@@ -10,7 +10,7 @@
 /* category */
 
 .navbarhover {
-  @apply hover:bg-blue-400 rounded-md hover:px-1 hover:text-black;
+  @apply hover:bg-blue-400 rounded-md hover:px-1 hover:text-black -mx-1;
 }
 
 .parent-container {
@@ -57,3 +57,10 @@
   border-radius: 4px;
   padding: 5px;
 }
+
+/* grid view */
+
+.shadow {
+  box-shadow: 10px 13px 9px -6px rgba(0, 0, 0, 0.55);
+}
+

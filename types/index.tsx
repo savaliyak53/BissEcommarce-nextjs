@@ -22,3 +22,8 @@ export interface prod {
   thumbnail: string;
   images: string[];
 }
+
+export interface addPercentdata {
+  number: number;
+  percentage: number;
+}

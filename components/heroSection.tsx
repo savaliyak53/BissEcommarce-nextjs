@@ -48,7 +48,10 @@ const HeroSection: React.FC = () => {
 
   return (
     <>
-      <div className="h-auto bg-gray-800 text-white py-10 space-y-[2.5rem] flex flex-col items-center justify-around">
+      <div
+        id="heroSection"
+        className="h-auto bg-gray-800 text-white py-10 space-y-[2.5rem] flex flex-col items-center justify-around"
+      >
         <div className="sm:w-[60%] mx-5 leading-tight text-center font-bold text-6xl">
           Bizz platform for everyone
         </div>
