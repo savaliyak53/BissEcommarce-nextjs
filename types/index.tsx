@@ -27,3 +27,16 @@ export interface addPercentdata {
   number: number;
   percentage: number;
 }
+export interface filterProp {
+  params: string;
+  isOpen: boolean;
+  filterProduct?: filterData;
+}
+
+export interface filterData {
+  sorting: string | null;
+  search: string | null;
+  brand: string | null;
+  star: number | null;
+  priceSlider: number | null;
+}

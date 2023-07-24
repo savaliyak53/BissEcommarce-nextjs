@@ -32,6 +32,8 @@
   background-color: transparent;
 }
 
+/* registration from */
+
 .ant-input::placeholder {
   color: #1f2937;
 }
@@ -45,11 +47,57 @@
   border-radius: 0%;
 }
 
-.ant-select {
-  border-bottom: 1px solid #1f2937 !important;
+.react-tel-input .form-control,
+.flag-dropdown {
+  border: none !important;
 }
 
-/* footer component */
+.react-tel-input .form-control {
+  @apply lg:!-ml-52;
+}
+.react-tel-input {
+  @apply !border-b !border-gray-800 -mt-3;
+}
+/* product filter component */
+.ant-select-item-option-content {
+  @apply bg-gray-200 p-2 rounded-lg w-full;
+}
+
+:where(.css-dev-only-do-not-override-1m62vyb).ant-select-dropdown
+  .ant-select-item-option-selected {
+  @apply bg-transparent;
+}
+:where(.css-dev-only-do-not-override-1m62vyb).ant-select-dropdown
+  .ant-select-item-option-selected
+  .ant-select-item-option-content {
+  @apply bg-gray-800 text-white rounded-lg;
+}
+
+:where(.css-dev-only-do-not-override-1m62vyb).ant-slider
+  .ant-slider-handle::after {
+  box-shadow: 0 0 0 2px #1f2937;
+}
+
+/* sider */
+:where(.css-dev-only-do-not-override-1m62vyb).ant-slider:hover
+  .ant-slider-handle::after {
+  box-shadow: 0 0 0 2px #1f2937;
+}
+
+:where(.css-dev-only-do-not-override-1m62vyb).ant-slider
+  .ant-slider-handle:focus::after {
+  background-color: #1f2937;
+  box-shadow: none;
+}
+
+:where(.css-dev-only-do-not-override-1m62vyb).ant-slider:hover
+  .ant-slider-rail {
+  background-color: rgb(41, 0, 0) !important;
+}
+:where(.css-dev-only-do-not-override-1m62vyb).ant-slider .ant-slider-rail {
+  background-color: rgb(41, 0, 0) !important;
+}
+
 /* list view */
 
 .productImg {
@@ -63,4 +111,3 @@
 .shadow {
   box-shadow: 10px 13px 9px -6px rgba(0, 0, 0, 0.55);
 }
-

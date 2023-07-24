@@ -9,6 +9,8 @@ import { FcGoogle } from "react-icons/fc";
 import { FaLinkedinIn } from "react-icons/fa";
 import FormItem from "antd/es/form/FormItem";
 import Link from "next/link";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const Option = Select.Option;
 
@@ -98,9 +100,11 @@ const JoinUs = () => {
               </FormItem>
               <Form.Item
                 name="phone"
+                label="Phone"
                 rules={[
                   {
-                    max: 10,
+                    max: 15,
+                    message: "check number",
                   },
                   {
                     required: true,
@@ -108,11 +112,12 @@ const JoinUs = () => {
                   },
                 ]}
               >
-                <Input
-                  placeholder="Phone"
-                  bordered={false}
-                  type="text"
-                  className="inputBorder"
+                <PhoneInput
+                  country={"in"}
+                  placeholder="enter phone number"
+                  buttonClass="phoneSelect"
+                  inputClass="phoneSelect"
+                  containerClass="phoneclass"
                 />
               </Form.Item>
               <FormItem

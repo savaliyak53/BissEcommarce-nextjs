@@ -4,8 +4,7 @@
 }
 
 .footerHover:hover {
-  @apply text-slate-300 border-b border-slate-300;
-  margin-bottom: -1px;
+  @apply underline;
 }
 
 /* login page */
