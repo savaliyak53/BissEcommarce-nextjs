@@ -1,5 +1,5 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { FaOpencart } from "react-icons/fa";
@@ -9,6 +9,9 @@ const Navbar = () => {
   const handleRouter = (route: string) => {
     router.push(route);
   };
+
+  const path = usePathname()
+  console.log(path,"path")
 
   return (
     <div className="sticky top-0  bg-gray-800  z-50">
@@ -21,26 +24,26 @@ const Navbar = () => {
             <span>BISS</span>
             <FaOpencart className="hidden sm:inline font-semibold " />
           </div>
-          <div className="lg:flex gap-x-5 hidden py-3">
-            <div onClick={() => handleRouter("/")} className="navbarhover">
+          <div className={`lg:flex gap-x-5 hidden py-3 `}>
+            <div onClick={() => handleRouter("/")} className={`navbarhover ${(path === "/") ? 'text-black px-2 bg-blue-400':""}`}>
               Home
             </div>
             <div
               onClick={() => handleRouter("/products")}
-              className="navbarhover"
+              className={`navbarhover ${((path !== "/") && (path !== "/cart")  && (path !== "/about")  && (path !== "/contact") && (path !== "/registration/joinus") && (path !== "/registration")) ? 'text-black px-2 bg-blue-400':""}`}
             >
               Products
             </div>
-            <div onClick={() => handleRouter("/about")} className="navbarhover">
+            <div onClick={() => handleRouter("/about")} className={`navbarhover ${(path === "/about") ? 'text-black px-2 bg-blue-400':""}`}>
               About
             </div>
             <div
               onClick={() => handleRouter("/contact")}
-              className="navbarhover"
+              className={`navbarhover ${(path === "/contact") ? 'text-black px-2 bg-blue-400':""}`}
             >
               Contact
             </div>
-            <div onClick={() => handleRouter("/cart")} className="navbarhover">
+            <div onClick={() => handleRouter("/cart")} className={`navbarhover ${(path === "/cart") ? 'text-black px-2 bg-blue-400':""}`}>
               Cart
             </div>
           </div>
