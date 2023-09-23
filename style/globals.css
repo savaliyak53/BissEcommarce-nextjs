@@ -10,7 +10,7 @@
 /* category */
 
 .navbarhover {
-  @apply hover:bg-blue-400 rounded-md hover:px-1 hover:text-black -mx-1;
+  @apply hover:bg-blue-400 rounded-md hover:px-2 hover:text-black -mx-1;
 }
 
 .parent-container {
