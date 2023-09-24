@@ -1,30 +1,37 @@
 "use client";
 import { usePathname, useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { FaOpencart } from "react-icons/fa";
+import { ImMenu3, ImMenu4 } from "react-icons/im"
 
 const Navbar = () => {
+  const [openNav, setOpenNav] = useState(false)
   const router = useRouter();
   const handleRouter = (route: string) => {
     router.push(route);
   };
 
   const path = usePathname()
-  console.log(path,"path")
+
+  const handleOpenNav = () => {
+    setOpenNav(!openNav)
+  } 
+
 
   return (
-    <div className="sticky top-0  bg-gray-800  z-50">
+    <div className="sticky top-0 bg-gray-800 z-50">
       <div className="flex justify-around font-bold text-white py-3 px-10 lg:px-0">
-        <div className="flex justify-between w-[35%]">
+        <div className={`flex justify-between relative w-[35%]`}>
           <div
             onClick={() => handleRouter("/")}
-            className="space-x-3 my-2 text-3xl"
+            className="space-x-3 my-2 text-3xl mr-3 flex"
           >
             <span>BISS</span>
-            <FaOpencart className="hidden sm:inline font-semibold " />
+            <span className="lg:hidden text-3xl navbarhover" onClick={handleOpenNav} >{ openNav? <ImMenu4/> : <ImMenu3/> } </span>
+
           </div>
-          <div className={`lg:flex gap-x-5 hidden py-3 `}>
+          <div className={`lg:!flex lg:!flex-row lg:!static lg:!bg-transparent lg:!space-y-0 lg:!w-fit lg:!px-0  gap-x-5 py-3 ${openNav?" flex-col absolute top-11 space-y-2 rounded-lg bg-black w-36 px-5":"hidden"}`}>
             <div onClick={() => handleRouter("/")} className={`navbarhover ${(path === "/") ? 'text-black px-2 bg-blue-400':""}`}>
               Home
             </div>
@@ -48,11 +55,11 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        <div className="flex sm:gap-x-5 gap-x-3">
-          <div className="lg:hidden my-3 navbarhover ">Icon</div>
+        <div className="flex items-center sm:gap-x-5 gap-x-3">
+      
           <div
             onClick={() => handleRouter("/registration")}
-            className="my-3 navbarhover "
+              className={` navbarhover ${(path === "/registration") ? 'text-black px-2  bg-blue-400':""}`}
           >
             Login
           </div>
@@ -62,6 +69,7 @@ const Navbar = () => {
           >
             JOIN US
             <AiOutlineArrowRight className="inline relative z-0 bottom-[1px] w-8 h-6" />
+
           </div>
         </div>
       </div>
