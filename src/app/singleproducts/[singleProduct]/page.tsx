@@ -5,7 +5,7 @@ export default function SingleProducts({
   params,
 }: {
   params: { singleProduct: string };
-}) {
+}):JSX.Element {
   const productType = params.singleProduct;
   return (
     <div>

@@ -1,12 +1,10 @@
-"use client";
 import React from "react";
 import Navbar from "../../../components/navbar";
-
-const Cart = () => {
+const Cart:React.FC= () => {
   return (
     <>
-      <Navbar />
-      <div>login</div>
+    <Navbar />
+    <div>Cart</div>
     </>
   );
 };

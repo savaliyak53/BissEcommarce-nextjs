@@ -55,7 +55,7 @@ const HeroSection: React.FC = () => {
         <div className="sm:w-[60%] mx-5 leading-tight text-center font-bold text-6xl">
           Bizz platform for everyone
         </div>
-        <div className="w-[40%] space-y-[2.5rem] leading-snug font-semibold text-center ">
+        <div className="max-w-[50%] space-y-[2.5rem] leading-snug font-semibold text-center ">
           <div>
             Is No Sore It Will Not Heal, No Ecommerce It Will Not Subdue ll
             Wonder Where The Yellow Went, When You Brush Your Teeth With

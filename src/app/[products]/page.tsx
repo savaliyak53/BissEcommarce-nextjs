@@ -12,8 +12,40 @@ import ReactStars from "react-rating-star-with-type";
 
 const Option = Select.Option;
 
-export default function Products({ params }: { params: { products: string } }) {
-  const [filterProduct, setFilterProduct] = useState({
+interface FilterProduct {
+  sorting:string | null,
+  search:string | null,
+  brand:string | null,
+  star:number,
+  priceSlider:number
+}
+
+interface Params {
+  params:{products:string}
+}
+
+interface ProductData {
+  [x: string]: any;
+  brand:string,
+  category:string,
+  description:string,
+  discountPercentage:number,
+  id:number,
+  images:string[],
+  price:number,
+  rating:number,
+  stock:number,
+  thumbnail:string,
+  title:string
+}
+
+
+
+interface ProductDatas extends Array<ProductData> {}
+
+export default function Products({ params }: Params ):JSX.Element {
+
+  const [filterProduct, setFilterProduct] = useState<FilterProduct>({
     sorting: "a-z",
     search: null,
     brand: "All",
@@ -21,48 +53,49 @@ export default function Products({ params }: { params: { products: string } }) {
     priceSlider: 0,
   });
 
-  const productType = decodeURIComponent(params.products);
-  const [isOpen, setIsOpen] = useState(false);
-  const onRequestClose = () => setIsOpen(!isOpen);
+  const productType:string = decodeURIComponent(params.products);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const onRequestClose = ():void => setIsOpen(!isOpen);
 
-  const { data: productData, isLoading }: any = useGetProducts();
-  const productDatas = productData?.data.products;
+  const { data: productData, isLoading }:{data:any,isLoading:boolean} = useGetProducts();
 
-  const productBrand: string[] = productDatas?.map((item: any) => item.brand);
+  const productDatas:ProductDatas = productData?.data.products;
 
-  const brand = ["All", ...new Set(productBrand)];
+  const productBrand: string[] = productDatas?.map((item: ProductData) => item.brand);
 
-  const starRating = [4.8, 4.6, 4.4, 4.2, 3.5];
+  const brand:string[] = ["All", ...new Set(productBrand)];
 
-  const handleStar = (value: any) => {
+  const starRating:number[] = [4.8, 4.6, 4.4, 4.2, 3.5];
+
+  const handleStar = (value: number):void => {
     setFilterProduct({
       ...filterProduct,
       star: value,
     });
   };
 
-  const handleSlider = (value: number) => {
+  const handleSlider = (value: number):void => {
     setFilterProduct({
       ...filterProduct,
       priceSlider: value,
     });
   };
 
-  const handSort = (value: any) => {
+  const handSort = (value: string):void => {
     setFilterProduct({
       ...filterProduct,
       sorting: value,
     });
   };
 
-  const handleSearch = (e: any) => {
+  const handleSearch = (event:React.ChangeEvent<HTMLInputElement>):void => {
     setFilterProduct({
       ...filterProduct,
-      search: e.target.value,
+      search: event.target.value,
     });
   };
 
-  const handleBrand = (value: any) => {
+  const handleBrand = (value: string):void => {
     setFilterProduct({
       ...filterProduct,
       brand: value,

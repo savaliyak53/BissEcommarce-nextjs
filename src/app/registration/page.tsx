@@ -10,16 +10,16 @@ import { FaLinkedinIn } from "react-icons/fa";
 import FormItem from "antd/es/form/FormItem";
 import Link from "next/link";
 
-const Login = () => {
-  interface value {
-    email: string;
-    password: string;
-  }
+interface value {
+  email: string;
+  password: string;
+}
+
+const Login:React.FC = () => {
   const handleSubmit = (values: value) => {
     console.log(values);
   };
 
-  
 
   return (
     <div className=" text-gray-800 w-full">

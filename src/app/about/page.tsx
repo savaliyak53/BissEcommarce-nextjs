@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../../../components/navbar";
 
-const About = () => {
+const About:React.FC = () => {
   return (
     <>
       <Navbar />

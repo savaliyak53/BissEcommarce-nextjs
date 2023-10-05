@@ -8,9 +8,7 @@ import HeroSection from "../../components/heroSection";
 import Navbar from "../../components/navbar";
 // import PhoneInput from "react-phone-input-2";
 
-export default function Home() {
-  const [phone, setPhone] = useState("");
-  const { data } = useGetProducts();
+export default function Home():React.ReactNode {
   return (
     <>
       <Navbar />

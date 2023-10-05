@@ -14,7 +14,7 @@ import "react-phone-input-2/lib/style.css";
 
 const Option = Select.Option;
 
-const JoinUs = () => {
+const JoinUs:React.FC = () => {
   interface value {
     email: string;
     password: string;
