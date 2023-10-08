@@ -1,16 +1,6 @@
-import { product, categorys } from "../types";
+import { product, categorys,auth } from "../types";
 
-type ApiRoutes = product & categorys
-interface ApiR extends product {
-  name:string,
-  age:number
-}
-
-const apir:ApiR = {
-  name:"kishan",
-  age:12,
-  product:"12"
-}
+type ApiRoutes = product & categorys & auth
 
 const products: product = {
   product: "/products?limit=100",
@@ -19,8 +9,12 @@ const products: product = {
 const category: categorys = {
   categories: "/products/categories",
 };
+const authentication: auth = {
+  authentication: "/auth/login",
+};
 
 export const apiRoutes:ApiRoutes = {
   ...products,
   ...category,
+  ...authentication
 };

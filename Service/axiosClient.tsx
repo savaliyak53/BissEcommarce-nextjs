@@ -1,13 +1,14 @@
 import axios from "axios";
 
 const backendURL = process.env.NEXT_PUBLIC_URL;
-
+const token = localStorage.getItem("token")
 const ultronClient = axios.create({
   baseURL: backendURL,
 });
 
 ultronClient.interceptors.request.use(
   function (config) {
+    config.headers.Authorization = token
     return config;
   },
   function (error) {

@@ -4,6 +4,9 @@ export interface product {
 export interface categorys {
   categories: string;
 }
+export interface auth {
+  authentication: string;
+}
 
 export interface params {
   param: string;

@@ -1,5 +1,6 @@
-"use client";
-import React from "react";
+"use client"
+import { useRouter } from "next/navigation";
+import React, { useState, useEffect } from "react";
 import Navbar from "../../../components/navbar";
 import styles from "@/../style/style.module.css";
 import Form from "antd/es/form";
@@ -9,17 +10,29 @@ import { FcGoogle } from "react-icons/fc";
 import { FaLinkedinIn } from "react-icons/fa";
 import FormItem from "antd/es/form/FormItem";
 import Link from "next/link";
+import { useGetAuth } from "../../../Hooks/api_hooks/auth";
 
 interface value {
-  email: string;
+  username: string;
   password: string;
 }
 
 const Login:React.FC = () => {
+  const router = useRouter()
+  const [userData,setUserData] = useState<{username:string,password:string}>({username:"",password:""})
+  const {data , isLoading}:any = useGetAuth(userData)
+
   const handleSubmit = (values: value) => {
-    console.log(values);
+    setUserData(values)
+    if(data?.data?.token){
+      localStorage.setItem("token",data?.data?.token)
+      router.replace("/")
+    }
   };
 
+  useEffect(() => {
+    userData
+  },[userData])
 
   return (
     <div className=" text-gray-800 w-full">
@@ -42,20 +55,21 @@ const Login:React.FC = () => {
               className="space-y-2  w-[80%] lg:w-[50%]"
             >
               <FormItem
-                name="email"
+                name="username"
                 rules={[
+                  { required: true, message: "Please add a username" },
                   {
-                    type: "email",
-                    message: "The input is not valid E-mail!",
+                    type: "string",
+                    message: "The input is not valid username!",
                   },
-                  {
-                    required: true,
-                    message: "Please input your E-mail!",
-                  },
+                  // {
+                  //   pattern: new RegExp("^[a-z]+$"),
+                  //   message: "All character must be in lowercase"
+                  // }
                 ]}
               >
                 <Input
-                  placeholder="Email"
+                  placeholder="Username"
                   bordered={false}
                   className="inputBorder"
                 />
@@ -65,16 +79,16 @@ const Login:React.FC = () => {
                 rules={[
                   { required: true, message: "Please add a password" },
                   {
-                    min: 8,
+                    min: 5,
                     message: "Password must have a minimum length of 8",
                   },
-                  {
-                    pattern: new RegExp(
-                      "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$"
-                    ),
-                    message:
-                      "Password must contain at least one lowercase letter, uppercase letter, number, and special character",
-                  },
+                  // {
+                  //   pattern: new RegExp(
+                  //     "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$"
+                  //   ),
+                  //   message:
+                  //     "Password must contain at least one lowercase letter, uppercase letter, number, and special character",
+                  // },
                 ]}
               >
                 <Input.Password

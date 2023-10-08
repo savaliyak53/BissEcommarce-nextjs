@@ -1,17 +1,17 @@
 "use client";
 import { usePathname, useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
-import { FaOpencart } from "react-icons/fa";
 import { ImMenu3, ImMenu4 } from "react-icons/im"
 
 const Navbar = () => {
+  const token = localStorage.getItem("token")
   const [openNav, setOpenNav] = useState(false)
+ 
   const router = useRouter();
   const handleRouter = (route: string) => {
     router.push(route);
     const array =Array(10).fill(3)
-    console.log(array)
   };
 
   const path = usePathname()
@@ -54,21 +54,27 @@ const Navbar = () => {
           </div>
         </div>
         <div className="flex items-center sm:gap-x-5 gap-x-3">
-      
-          <div
-            onClick={() => handleRouter("/registration")}
+        { token?<div
+            onClick={() =>{ localStorage.removeItem("token");router.refresh()}}
               className={` navbarhover ${(path === "/registration") ? 'text-black px-2  bg-blue-400':""}`}
           >
-            Login
-          </div>
-          <div
-            onClick={() => handleRouter("/registration/joinus")}
-            className="bg-blue-400 rounded-md h-[3rem] p-3"
-          >
-            JOIN US
-            <AiOutlineArrowRight className="inline relative z-0 bottom-[1px] w-8 h-6" />
-
-          </div>
+            Logout
+          </div> :
+          <>  
+            <div
+              onClick={() => handleRouter("/registration")}
+              className={` navbarhover ${(path === "/registration") ? 'text-black px-2  bg-blue-400' : ""}`}
+            >
+              Login
+            </div><div
+              onClick={() => handleRouter("/registration/joinus")}
+              className="bg-blue-400 rounded-md h-[3rem] p-3"
+            >
+                JOIN US
+                <AiOutlineArrowRight className="inline relative z-0 bottom-[1px] w-8 h-6" />
+              </div>
+          </>
+          }
         </div>
       </div>
     </div>
